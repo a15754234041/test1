@@ -1,0 +1,34 @@
+#如果多环境测试,则必须制定默认环境
+spring:
+ profiles:
+   active: dev
+--- #定义多个环境
+spring:
+  profiles: dev
+ 
+#yml是有层级关系的 
+#1.必须注意缩进 2.key与值之间使用:连接 同时注意加空格
+server:
+  port: 8091
+  servlet:    context-path: /
+#通过yml文件实现对象属性赋值
+#当spring容器启动时加载该配置
+#name 为计算机的名字,优先级最高 为别的赋值不能用他
+user:
+  id: 110
+  username: 张三
+  age: 18
+  sex: 其他
+---
+  spring: 
+    profiles: test
+#通过yml文件实现对象属性赋值
+#当spring容器启动时加载该配置
+#name 为计算机的名字,优先级最高 为别的赋值不能用他  
+  server:    port: 9000
+    servlet:      context-path: /1812    
+  user:
+    id: 200
+    username: 测试
+    age: 50
+    sex: 他
